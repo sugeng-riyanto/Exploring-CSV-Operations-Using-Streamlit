@@ -1,6 +1,7 @@
 ﻿# Exploring-CSV-Operations-Using-Streamlit
 
 
+
 # CSV Operations with Streamlit
 
 This project demonstrates how to perform various CSV operations using Python and Streamlit. The project is designed to help students understand how to handle CSV files interactively and apply these concepts in a Streamlit web application.
@@ -13,8 +14,10 @@ This project demonstrates how to perform various CSV operations using Python and
 2. **Column Sum Calculation**:
    - Input a column name to calculate the sum of its integer values.
 
-3. **Create and Download New CSV Files**:
-   - Users can add new rows interactively and download the new data as a CSV file.
+3. **Create, Customize, and Download New CSV Files**:
+   - Users can dynamically add or remove columns.
+   - Enter data row-by-row, adjusting to the customized column structure.
+   - Download the new dataset as a CSV file.
 
 ## Prerequisites
 
@@ -56,17 +59,22 @@ streamlit run app.py
 1. Enter the column name (case-sensitive) to calculate the sum of its integer values.
 2. If the column contains non-numeric data, an error message will be displayed.
 
-### Create and Download a New CSV File
+### Create, Customize, and Download a New CSV File
 
-1. Enter values for **Name**, **Class**, and **City** in the input fields.
-2. Click "Add Row" to add the entered data to a table.
-3. Once all rows are added, click "Download CSV" to save the file locally.
+1. **Add/Remove Columns**:
+   - Enter a column name and click "Add Column" to include it in the structure.
+   - Use the dropdown menu to select and remove existing columns.
+2. **Add Data Rows**:
+   - Input data for each column dynamically based on the current column structure.
+   - Ensure all fields are filled before adding a row.
+3. **Download CSV**:
+   - Once all rows are added, click "Download CSV" to save the customized file locally.
 
 ## Example Scenarios
 
 - **Scenario 1**: Upload a dataset like `players_20.csv` to view its content.
 - **Scenario 2**: Calculate the sum of a numeric column like "Wage".
-- **Scenario 3**: Add student information interactively and generate a new CSV file.
+- **Scenario 3**: Add custom columns and rows interactively to create a new dataset.
 
 ## Project Files
 
