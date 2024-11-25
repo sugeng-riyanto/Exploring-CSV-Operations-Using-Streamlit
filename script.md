@@ -147,31 +147,40 @@ if uploaded_file:
 
 # Create new CSV
 st.write("---")
-st.header("Create New CSV")
+# Title
+st.title("Create and Download a New CSV File")
 
-name = st.text_input("Name")
-student_class = st.text_input("Class")
-city = st.text_input("City")
+# Input fields
+name = st.text_input("Enter Name")
+student_class = st.text_input("Enter Class")
+city = st.text_input("Enter City")
 
-new_data = []
+# Initialize session state for new data to persist across interactions
+if "new_data" not in st.session_state:
+    st.session_state.new_data = []
 
-if st.button("Add New Row"):
+# Add row button
+if st.button("Add Row"):
     if name and student_class and city:
-        new_data.append({'Name': name, 'Class': student_class, 'City': city})
+        st.session_state.new_data.append({'Name': name, 'Class': student_class, 'City': city})
         st.success("Row added!")
+    else:
+        st.error("Please fill in all fields.")
 
-if new_data:
-    new_df = pd.DataFrame(new_data)
-    st.write("Current Data to Save:")
+# Display added rows
+if st.session_state.new_data:
+    new_df = pd.DataFrame(st.session_state.new_data)
+    st.write("Current Data:")
     st.dataframe(new_df)
 
-    if st.button("Download New CSV"):
-        st.download_button(
-            label="Download CSV",
-            data=new_df.to_csv(index=False),
-            file_name="created_data.csv",
-            mime="text/csv"
-        )
+    # Save and download the new CSV
+    csv_data = new_df.to_csv(index=False).encode('utf-8')
+    st.download_button(
+        label="Download CSV",
+        data=csv_data,
+        file_name="new_data.csv",
+        mime="text/csv"
+    )
 ```
 ---
 
